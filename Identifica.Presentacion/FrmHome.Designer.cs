@@ -50,6 +50,7 @@
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNoIdentificados = new System.Windows.Forms.Label();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +181,7 @@
             this.dgvlista.Name = "dgvlista";
             this.dgvlista.ReadOnly = true;
             this.dgvlista.RowHeadersVisible = false;
+            this.dgvlista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvlista.Size = new System.Drawing.Size(1139, 507);
             this.dgvlista.TabIndex = 46;
             // 
@@ -277,12 +279,32 @@
             this.lblNoIdentificados.Click += new System.EventHandler(this.lblNoIdentificados_Click);
             this.lblNoIdentificados.DoubleClick += new System.EventHandler(this.lblNoIdentificados_DoubleClick);
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(1088, 69);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(62, 37);
+            this.btnNuevo.TabIndex = 51;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1163, 713);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblNoIdentificados);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalRegistros);
@@ -300,7 +322,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmHome";
+            this.Text = "Identifica Credit - Ref TElecomm";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -331,5 +353,6 @@
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNoIdentificados;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }

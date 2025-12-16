@@ -72,6 +72,7 @@ namespace Identifica.Presentacion
             }
         }
 
+        //carga los datos del edo de cta telecom
         private void btnAdTelecom_Click(object sender, EventArgs e)
         {
             OpenFileDialog cargar = new OpenFileDialog();
@@ -104,7 +105,10 @@ namespace Identifica.Presentacion
 
                 //recorre cada fila del archivo de ctaTelecomm de acuerdo a los valores (posicion-fila , posicion-columna)
                 while (!string.IsNullOrEmpty(ctaTelecomm.GetCellValueAsString(valorX, 3))) {
-                    TableCtaTelecomm.Rows.Add(ctaTelecomm.GetCellValueAsString(valorX, 1),ctaTelecomm.GetCellValueAsString(valorX, 2), ctaTelecomm.GetCellValueAsString(valorX, 5), ctaTelecomm.GetCellValueAsString(valorX, 6), ctaTelecomm.GetCellValueAsString(valorX, 7), ctaTelecomm.GetCellValueAsString(valorX, 8), ctaTelecomm.GetCellValueAsString(valorX, 9));
+                    
+                    //agrega cada fila del archivo edo cta telecom al datatable
+                    TableCtaTelecomm.Rows.Add(ctaTelecomm.GetCellValueAsString(valorX, 1),ctaTelecomm.GetCellValueAsString(valorX, 2), ctaTelecomm.GetCellValueAsDateTime(valorX, 5).ToShortDateString(), ctaTelecomm.GetCellValueAsString(valorX, 6), ctaTelecomm.GetCellValueAsString(valorX, 7), ctaTelecomm.GetCellValueAsString(valorX, 8), ctaTelecomm.GetCellValueAsString(valorX, 9));
+
                     valorX++;
                 }
                 lblCtasTelecom.Text = "Registros Cargados: " + (valorX - 3).ToString();
@@ -155,7 +159,7 @@ namespace Identifica.Presentacion
                     if (Convert.ToInt64(fechaNac) == 0)
                     {
                         creditoBien = refTelecom.Substring(9, 10);
-                        dgvlista.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], creditoBien, filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+                        dgvlista.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], creditoBien, Convert.ToString(filaTelecom["fecha"]), filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
                     }
                     else if (Convert.ToInt64(fechaNac) > 0) {
 
@@ -188,7 +192,7 @@ namespace Identifica.Presentacion
                         }            
                     }
                 }
-                dgvlista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                
                 TotalRegistros();
             }
         }
@@ -231,6 +235,14 @@ namespace Identifica.Presentacion
                 FrmNoIdentificados ni = new FrmNoIdentificados(this.TableNoidentificado);
                 ni.ShowDialog();
             }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            TableAnalitico.Clear();
+            TableCtaTelecomm.Clear();
+            TableNoidentificado.Clear();
+            dgvlista.Rows.Clear();
         }
     }
 }

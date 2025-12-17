@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpreadsheetLight;
 
+
 namespace Identifica.Presentacion
 {
     public partial class FrmHome : Form
@@ -209,7 +210,6 @@ namespace Identifica.Presentacion
             {
                 string creditCartera = Convert.ToString(filaCartera["credito"]);
                 
-
                 if (credito == creditCartera) {
                     intento = 1;
                     return intento;
@@ -251,6 +251,71 @@ namespace Identifica.Presentacion
                 lblNoIdentificados.Text = "000";
                 lblTotalIdentificado.Text = "000";
             }            
+        }
+
+        public void exportExcel() {
+            if (dgvlista.Rows.Count > 0) {
+
+                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                app.Visible = false;
+                worksheet = workbook.Sheets["Hoja1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "Usuarios";
+                // Cabeceras
+                for (int i = 1; i < dgvlista.Columns.Count + 1; i++)
+                {
+                    if (i > 1 && i < dgvlista.Columns.Count)
+                    {
+                        worksheet.Cells[1, i] = dgvlista.Columns[i - 1].HeaderText;
+                    }
+                }
+                // Valores
+                for (int i = 0; i < dgvlista.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgvlista.Columns.Count; j++)
+                    {
+                        if (j > 0 && j < dgvlista.Columns.Count - 1)
+                        {
+                            worksheet.Cells[i + 2, j + 1] = dgvlista.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Archivos de Excel|*.xlsx";
+                saveFileDialog.Title = "Guardar archivo";
+                saveFileDialog.FileName = "TelecomExport"+DateTime.Today.ToString();
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.FileName != "")
+                {
+                    Console.WriteLine("Ruta en: " + saveFileDialog.FileName);
+                    workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                    app.Quit();
+                }
+            }
+        }
+
+        private void ptbExportar_Click(object sender, EventArgs e)
+        {
+            exportExcel();
+        }
+
+        private void ptbExportar_MouseEnter(object sender, EventArgs e)
+        {
+            ptbExportar.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void ptbExportar_MouseHover(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void ptbExportar_MouseLeave(object sender, EventArgs e)
+        {
+            ptbExportar.BorderStyle = BorderStyle.None;
         }
     }
 }

@@ -114,3 +114,4 @@ D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Pr
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.csproj.CopyComplete
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.csprojAssemblyReference.cache
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.FrmNoIdentificados.resources
+D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.csproj.ResolveComReference.cache

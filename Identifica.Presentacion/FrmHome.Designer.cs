@@ -36,7 +36,6 @@
             this.btnAdTelecom = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnProcesar = new System.Windows.Forms.Button();
-            this.lblidentificadas = new System.Windows.Forms.Label();
             this.dgvlista = new System.Windows.Forms.DataGridView();
             this.A = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,14 +45,14 @@
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNoIdentificados = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTotalIdentificado = new System.Windows.Forms.Label();
+            this.ptbExportar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExportar)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCreditosCargados
@@ -99,7 +98,7 @@
             this.btnAdAnalitico.Location = new System.Drawing.Point(270, 69);
             this.btnAdAnalitico.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdAnalitico.Name = "btnAdAnalitico";
-            this.btnAdAnalitico.Size = new System.Drawing.Size(152, 37);
+            this.btnAdAnalitico.Size = new System.Drawing.Size(150, 30);
             this.btnAdAnalitico.TabIndex = 40;
             this.btnAdAnalitico.Text = "Adjuntar Analitico";
             this.btnAdAnalitico.UseVisualStyleBackColor = false;
@@ -118,7 +117,7 @@
             this.btnAdTelecom.Location = new System.Drawing.Point(13, 69);
             this.btnAdTelecom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdTelecom.Name = "btnAdTelecom";
-            this.btnAdTelecom.Size = new System.Drawing.Size(151, 37);
+            this.btnAdTelecom.Size = new System.Drawing.Size(150, 30);
             this.btnAdTelecom.TabIndex = 39;
             this.btnAdTelecom.Text = "Adjuntar Telecom";
             this.btnAdTelecom.UseVisualStyleBackColor = false;
@@ -147,21 +146,11 @@
             this.btnProcesar.Location = new System.Drawing.Point(581, 69);
             this.btnProcesar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnProcesar.Name = "btnProcesar";
-            this.btnProcesar.Size = new System.Drawing.Size(151, 37);
+            this.btnProcesar.Size = new System.Drawing.Size(150, 30);
             this.btnProcesar.TabIndex = 44;
             this.btnProcesar.Text = "Identificar Créditos";
             this.btnProcesar.UseVisualStyleBackColor = false;
             this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
-            // 
-            // lblidentificadas
-            // 
-            this.lblidentificadas.AutoSize = true;
-            this.lblidentificadas.Location = new System.Drawing.Point(532, 118);
-            this.lblidentificadas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblidentificadas.Name = "lblidentificadas";
-            this.lblidentificadas.Size = new System.Drawing.Size(170, 14);
-            this.lblidentificadas.TabIndex = 45;
-            this.lblidentificadas.Text = "Referencias Identificadas:";
             // 
             // dgvlista
             // 
@@ -234,17 +223,6 @@
             this.ac.Name = "ac";
             this.ac.ReadOnly = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(429, 69);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 47;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
             // lblTotalRegistros
             // 
             this.lblTotalRegistros.AutoSize = true;
@@ -293,7 +271,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(1088, 69);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(62, 37);
+            this.btnNuevo.Size = new System.Drawing.Size(62, 30);
             this.btnNuevo.TabIndex = 51;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -310,20 +288,34 @@
             this.lblTotalIdentificado.TabIndex = 52;
             this.lblTotalIdentificado.Text = "000";
             // 
+            // ptbExportar
+            // 
+            this.ptbExportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptbExportar.Image = ((System.Drawing.Image)(resources.GetObject("ptbExportar.Image")));
+            this.ptbExportar.Location = new System.Drawing.Point(1110, 113);
+            this.ptbExportar.Name = "ptbExportar";
+            this.ptbExportar.Size = new System.Drawing.Size(40, 40);
+            this.ptbExportar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbExportar.TabIndex = 53;
+            this.ptbExportar.TabStop = false;
+            this.ptbExportar.Click += new System.EventHandler(this.ptbExportar_Click);
+            this.ptbExportar.MouseEnter += new System.EventHandler(this.ptbExportar_MouseEnter);
+            this.ptbExportar.MouseLeave += new System.EventHandler(this.ptbExportar_MouseLeave);
+            this.ptbExportar.MouseHover += new System.EventHandler(this.ptbExportar_MouseHover);
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1163, 713);
+            this.Controls.Add(this.ptbExportar);
             this.Controls.Add(this.lblTotalIdentificado);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblNoIdentificados);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTotalRegistros);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvlista);
-            this.Controls.Add(this.lblidentificadas);
             this.Controls.Add(this.btnProcesar);
             this.Controls.Add(this.lblCreditosCargados);
             this.Controls.Add(this.lblCtasTelecom);
@@ -338,7 +330,7 @@
             this.Text = "Identifica Credit - Ref TElecomm";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbExportar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,7 +344,6 @@
         private System.Windows.Forms.Button btnAdTelecom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnProcesar;
-        private System.Windows.Forms.Label lblidentificadas;
         private System.Windows.Forms.DataGridView dgvlista;
         private System.Windows.Forms.DataGridViewTextBoxColumn A;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
@@ -362,11 +353,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ac;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNoIdentificados;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTotalIdentificado;
+        private System.Windows.Forms.PictureBox ptbExportar;
     }
 }

@@ -324,10 +324,11 @@
             this.Controls.Add(this.btnAdTelecom);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Identifica Credit - Ref TElecomm";
+            this.Text = "Identificar Creditos [ Ref-Telecomm ]";
             this.Load += new System.EventHandler(this.FrmHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExportar)).EndInit();

@@ -103,7 +103,6 @@ D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\System.IO.Packaging
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\DocumentFormat.OpenXml.xml
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\SpreadsheetLight.xml
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\System.IO.Packaging.xml
-D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.csprojAssemblyReference.cache
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.csproj.CoreCompileInputs.cache
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.csproj.CopyComplete
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.dll

@@ -7,23 +7,80 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpreadsheetLight;
+using Identifica.Logica;
 
 namespace Identifica.Presentacion
 {
-    public partial class FrmExportRep : Form
+    public partial class FrmProcess : Form
     {
-        public FrmExportRep()
+        public FrmProcess()
         {
             InitializeComponent();
         }
 
-        private void FrmExportRep_Load(object sender, EventArgs e)
+        private void FrmProcess_Load(object sender, EventArgs e)
         {
 
         }
 
+        public void procesoIdentificaCreditos(DataTable cartera, DataTable telecom,DataTable noIdentificados, DataGridView dgv )
+        {
+            string refTelecom = "";
+            foreach (DataRow filaTelecom in telecom.Rows)
+            {
+                //obtiene la referencia
+                refTelecom = Convert.ToString(filaTelecom["Referencia"]);
+
+                //extrae la fecha de nac
+                string fechaNac = refTelecom.Substring(5, 4);
+                string creditoBien;
+
+                if (Convert.ToInt64(fechaNac) == 0)
+                {
+                    creditoBien = refTelecom.Substring(9, 10);
+                    dgv.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], creditoBien, Convert.ToString(filaTelecom["fecha"]), filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+                }
+                else if (Convert.ToInt64(fechaNac) > 0)
+                {
+                    //obtiene los dos primeros digitos del crédito
+                    string credito1 = refTelecom.Substring(11, 3) + "0";
+
+                    //agrega un 0 intermedio y completa el numero de crédito
+                    string intentoReal1 = credito1 + refTelecom.Substring(14, 5);
+
+                    //busca el credito en el rep analitico
+                    LRepCartera repC = new LRepCartera();
+                    int intentoBuscar = repC.buscaCredit(intentoReal1, cartera);
+                    //int intentoBuscar = buscaCredit(intentoReal1);
+
+                    if (intentoBuscar == 0)
+                    {
+                        string credito2 = refTelecom.Substring(11, 3) + "00";
+                        string intentoReal2 = credito2 + refTelecom.Substring(14, 5);
+                        int intentoBuscar2 = repC.buscaCredit(intentoReal2, cartera);
+
+                        if (intentoBuscar2 == 1)
+                        {
+                            dgv.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], intentoReal2, filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+                        }
+                        else
+                        {
+                            noIdentificados.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+                        }
+                    }
+                    else if (intentoBuscar == 1)
+                    {
+                        dgv.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], intentoReal1, filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+                    }
+                }
+            }           
+        }
+
+
         //funcion para exportar el contenido de Datagridview a Excel
-        public void ExporToPdf(DataGridView dgv) {
+        public void ExporToPdf(DataGridView dgv)
+        {
 
             if (dgv.Rows.Count > 0)
             {

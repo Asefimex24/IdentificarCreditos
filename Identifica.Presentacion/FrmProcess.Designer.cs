@@ -1,6 +1,6 @@
 ﻿namespace Identifica.Presentacion
 {
-    partial class FrmExportRep
+    partial class FrmProcess
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // FrmExportRep
+            // FrmProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 50);
-            this.Name = "FrmExportRep";
-            this.Text = "FrmExportRep";
-            this.Load += new System.EventHandler(this.FrmExportRep_Load);
+            this.ClientSize = new System.Drawing.Size(224, 22);
+            this.Name = "FrmProcess";
+            this.Text = "FrmProcess";
+            this.Load += new System.EventHandler(this.FrmProcess_Load);
             this.ResumeLayout(false);
 
         }

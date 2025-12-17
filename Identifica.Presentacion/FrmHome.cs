@@ -107,10 +107,11 @@ namespace Identifica.Presentacion
             {           
                 AnalitoCarteraPath = cargar.FileName;
 
+                //genera el datatable con las columnas correspondientes
                 LRepCartera lrc = new LRepCartera();
                 TableAnalitico = lrc.setRepCarteraTable();
                 
-                //crea el objeto y se carga la ruta del archivo de Reporte Analitico de Cartera
+                //crea el objeto, carga la ruta del archivo de Reporte Analitico de Cartera y se cargan los datos al Datatable
                 SLDocument Cartera = new SLDocument(this.AnalitoCarteraPath);
                 lrc.loadCartera(TableAnalitico, Cartera);
 
@@ -123,67 +124,6 @@ namespace Identifica.Presentacion
                 else {
                     Alerta("Ocurrió un error al cargar los datos");
                 }                
-            }
-        }
-
-        private void btnProcesar_Click(object sender, EventArgs e)
-        {
-            string refTelecom = "";
-
-            if (TableAnalitico.Rows != null && TableCtaTelecomm.Rows != null)
-            {
-                foreach (DataRow filaTelecom in TableCtaTelecomm.Rows)
-                {
-                    //obtiene la referencia
-                    refTelecom = Convert.ToString(filaTelecom["Referencia"]);
-
-                    //extrae la fecha de nac
-                    string fechaNac = refTelecom.Substring(5, 4);
-                    string creditoBien;
-
-                    if (Convert.ToInt64(fechaNac) == 0)
-                    {
-                        creditoBien = refTelecom.Substring(9, 10);
-                        dgvlista.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], creditoBien, Convert.ToString(filaTelecom["fecha"]), filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
-                    }
-                    else if (Convert.ToInt64(fechaNac) > 0)
-                    {
-                        //obtiene los dos primeros digitos del crédito
-                        string credito1 = refTelecom.Substring(11, 3) + "0";
-
-                        //agrega un 0 intermedio y completa el numero de crédito
-                        string intentoReal1 = credito1 + refTelecom.Substring(14, 5);
-
-                        //busca el credito en el rep analitico
-                        LRepCartera repC = new LRepCartera();
-                        int intentoBuscar = repC.buscaCredit(intentoReal1, TableAnalitico);
-                        //int intentoBuscar = buscaCredit(intentoReal1);
-
-                        if (intentoBuscar == 0)
-                        {
-                            string credito2 = refTelecom.Substring(11, 3) + "00";
-                            string intentoReal2 = credito2 + refTelecom.Substring(14, 5);
-                            int intentoBuscar2 = repC.buscaCredit(intentoReal2, TableAnalitico);                                
-
-                            if (intentoBuscar2 == 1)
-                            {
-                                dgvlista.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], intentoReal2, filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
-                            }
-                            else
-                            {
-                                TableNoidentificado.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
-                            }
-                        }
-                        else if (intentoBuscar == 1)
-                        {
-                            dgvlista.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], intentoReal1, filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
-                        }
-                    }
-                }
-                TotalRegistros();
-            }
-            else {
-                Alerta("No se han adjuntado ninguno de los archivos necesarios");
             }
         }
 
@@ -218,8 +158,8 @@ namespace Identifica.Presentacion
         }
 
         private void ptbExportar_Click(object sender, EventArgs e)
-        {           
-            FrmExportRep exprep = new FrmExportRep();
+        {
+            FrmProcess exprep = new FrmProcess();            
             exprep.ExporToPdf(dgvlista);
         }
 
@@ -238,5 +178,18 @@ namespace Identifica.Presentacion
             ident.alerta(mensaje);
         }
 
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {           
+            if (TableAnalitico.Rows != null && TableCtaTelecomm.Rows != null)
+            {
+                FrmProcess procIdentifica = new FrmProcess();
+                procIdentifica.procesoIdentificaCreditos(this.TableAnalitico, this.TableCtaTelecomm, this.TableNoidentificado, this.dgvlista);
+                TotalRegistros();
+            }
+            else
+            {
+                Alerta("No se han adjuntado ninguno de los archivos necesarios");
+            }
+        }
     }
 }

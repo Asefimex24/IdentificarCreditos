@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpreadsheetLight;
+using Identifica.Logica;
+
 
 
 namespace Identifica.Presentacion
@@ -29,45 +31,32 @@ namespace Identifica.Presentacion
         private void FrmHome_Load(object sender, EventArgs e)
         {
             InicializarDatatableNoIdentificados();
-            
+            iniciaTblTelecom();
+            iniciaTblCartera();            
         }
 
         private void InicializarDatatableNoIdentificados() {
+            LNoIdentificados nd = new LNoIdentificados();
+            this.TableNoidentificado = nd.iniciaNoIdentificados();      
+        }
 
-            TableNoidentificado = new DataTable("NoIdentificados");
-            //add columnas al datatable
-            DataColumn A1 = new DataColumn("A1");
-            DataColumn Referencia = new DataColumn("Referencia");
-            DataColumn fecha = new DataColumn("fecha");
-            DataColumn A2 = new DataColumn("A2");
-            DataColumn Monto = new DataColumn("Monto");
-            DataColumn Centavos = new DataColumn("Centavos");
-            DataColumn A3 = new DataColumn("A3");
+        private void iniciaTblTelecom() {
+            LCtaTelecom tel = new LCtaTelecom();
+            this.TableCtaTelecomm = tel.iniciaTabletelecom();
+        }
 
-            TableNoidentificado.Columns.Add(A1);
-            TableNoidentificado.Columns.Add(Referencia);
-            TableNoidentificado.Columns.Add(fecha);
-            TableNoidentificado.Columns.Add(A2);
-            TableNoidentificado.Columns.Add(Monto);
-            TableNoidentificado.Columns.Add(Centavos);
-            TableNoidentificado.Columns.Add(A3);
-
-            TableCtaTelecomm = new DataTable();
-            TableAnalitico = new DataTable();
-
-           
+        private void iniciaTblCartera() {
+            LRepCartera crt = new LRepCartera();
+            this.TableAnalitico = crt.iniciaTableCartera();
         }
 
         private OpenFileDialog cargar_archivos()
         {
-
             // Crear una instancia del OpenFileDialog
             OpenFileDialog openFileDialog = new OpenFileDialog();
-
             // Configurar propiedades (opcional)
             openFileDialog.Filter = "Todos los archivos (*.*)|*.*";
             openFileDialog.Title = "Seleccionar archivo";
-
             // Mostrar el diálogo y verificar si el usuario seleccionó un archivo
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -82,54 +71,30 @@ namespace Identifica.Presentacion
         //carga los datos del edo de cta telecom
         private void btnAdTelecom_Click(object sender, EventArgs e)
         {
-            OpenFileDialog cargar = new OpenFileDialog();
-                
-                cargar = cargar_archivos();
+            OpenFileDialog cargar = new OpenFileDialog();                
+            cargar = cargar_archivos();
 
             if (cargar.FileName != "")
             {
                 edoCtaTelecomPath = cargar.FileName;
-                TableCtaTelecomm = new DataTable("RepCtaTelecom");
-                //add columnas al datatable
-                DataColumn A1 = new DataColumn("A1");
-                DataColumn Referencia = new DataColumn("Referencia");
-                DataColumn fecha = new DataColumn("fecha");
-                DataColumn A2 = new DataColumn("A2");
-                DataColumn Monto = new DataColumn("Monto");
-                DataColumn Centavos = new DataColumn("Centavos");
-                DataColumn A3 = new DataColumn("A3");
 
-                TableCtaTelecomm.Columns.Add(A1);
-                TableCtaTelecomm.Columns.Add(Referencia);
-                TableCtaTelecomm.Columns.Add(fecha);
-                TableCtaTelecomm.Columns.Add(A2);
-                TableCtaTelecomm.Columns.Add(Monto);
-                TableCtaTelecomm.Columns.Add(Centavos);
-                TableCtaTelecomm.Columns.Add(A3);
+                LCtaTelecom tl = new LCtaTelecom();
+                TableCtaTelecomm = tl.setTableTelecom();
 
-                //crea el objeto y se carga la ruta del archivo de edo de cta telecomm            
+                //crea el objeto de  y se carga la ruta del archivo de edo de cta telecomm            
                 SLDocument ctaTelecomm = new SLDocument(this.edoCtaTelecomPath);
-                int valorX = 3;                
+                //esta funcion carga los datos de excel al datatable (revisar la clase LCtaTelecom)
+                tl.loadCtaTelecom(TableCtaTelecomm, ctaTelecomm);
 
-                //recorre cada fila del archivo de ctaTelecomm de acuerdo a los valores (posicion-fila , posicion-columna)
-                while (!string.IsNullOrEmpty(ctaTelecomm.GetCellValueAsString(valorX, 3))) {
-
-                    //validar si hay centavos
-                    decimal monto = Convert.ToDecimal(ctaTelecomm.GetCellValueAsString(valorX, 5));
-                    decimal centavos = Convert.ToDecimal(ctaTelecomm.GetCellValueAsString(valorX, 6));
-
-                    if (centavos > 0) {
-                        monto = monto + (centavos/100);
-                    }
-
-                    //agrega cada fila del archivo edo cta telecom al datatable
-                    TableCtaTelecomm.Rows.Add(ctaTelecomm.GetCellValueAsString(valorX, 1),ctaTelecomm.GetCellValueAsString(valorX, 2), ctaTelecomm.GetCellValueAsDateTime(valorX, 3).ToShortDateString(), ctaTelecomm.GetCellValueAsString(valorX, 4), monto.ToString(), ctaTelecomm.GetCellValueAsString(valorX, 6), ctaTelecomm.GetCellValueAsString(valorX, 7));
-
-                    valorX++;
+                if (TableCtaTelecomm.Rows.Count > 0)
+                {
+                    btnAdTelecom.BackColor = Color.ForestGreen;
+                    btnAdTelecom.Text = "Archivo Cargado";
+                    lblCtasTelecom.Text = "Registros Cargados: " + TableCtaTelecomm.Rows.Count.ToString();
                 }
-                btnAdTelecom.BackColor = Color.ForestGreen;
-                btnAdTelecom.Text = "Archivo Cargado";
-                lblCtasTelecom.Text = "Registros Cargados: " + (valorX - 3).ToString();
+                else {
+                    Alerta("Ocurrió un error al cargar los datos de Telecomm");
+                }
             }
         }
 
@@ -139,30 +104,25 @@ namespace Identifica.Presentacion
             cargar = cargar_archivos();
             
             if (cargar.FileName != "")
-            {
-           
-                AnalitoCarteraPath = cargar.FileName;                
-                TableAnalitico = new DataTable("RepAnalitico");
+            {           
+                AnalitoCarteraPath = cargar.FileName;
 
-                DataColumn numCredit = new DataColumn("credito");
-                DataColumn nombCliente = new DataColumn("cliente");
-                
-                TableAnalitico.Columns.Add(numCredit);
-                TableAnalitico.Columns.Add(nombCliente);
+                LRepCartera lrc = new LRepCartera();
+                TableAnalitico = lrc.setRepCarteraTable();
                 
                 //crea el objeto y se carga la ruta del archivo de Reporte Analitico de Cartera
                 SLDocument Cartera = new SLDocument(this.AnalitoCarteraPath);
-                int valorXCartera = 10;
-          
-                while (!string.IsNullOrEmpty(Cartera.GetCellValueAsString(valorXCartera, 2)))
-                {                   
-                    TableAnalitico.Rows.Add(Cartera.GetCellValueAsString(valorXCartera, 2), Cartera.GetCellValueAsString(valorXCartera, 8));
-                    valorXCartera++;
-                }
+                lrc.loadCartera(TableAnalitico, Cartera);
 
-                btnAdAnalitico.BackColor = Color.ForestGreen;
-                btnAdAnalitico.Text = "Archivo Cargado";
-                lblCreditosCargados.Text= "Créditos Cargados: " +(valorXCartera-10).ToString();                                            
+                if (TableAnalitico.Rows.Count > 0)
+                {
+                    btnAdAnalitico.BackColor = Color.ForestGreen;
+                    btnAdAnalitico.Text = "Archivo Cargado";
+                    lblCreditosCargados.Text = "Créditos Cargados: " + TableAnalitico.Rows.Count.ToString();
+                }
+                else {
+                    Alerta("Ocurrió un error al cargar los datos");
+                }                
             }
         }
 
@@ -170,18 +130,15 @@ namespace Identifica.Presentacion
         {
             string refTelecom = "";
 
-
             if (TableAnalitico.Rows != null && TableCtaTelecomm.Rows != null)
             {
-
-
                 foreach (DataRow filaTelecom in TableCtaTelecomm.Rows)
                 {
                     //obtiene la referencia
                     refTelecom = Convert.ToString(filaTelecom["Referencia"]);
+
                     //extrae la fecha de nac
                     string fechaNac = refTelecom.Substring(5, 4);
-
                     string creditoBien;
 
                     if (Convert.ToInt64(fechaNac) == 0)
@@ -191,21 +148,22 @@ namespace Identifica.Presentacion
                     }
                     else if (Convert.ToInt64(fechaNac) > 0)
                     {
-
                         //obtiene los dos primeros digitos del crédito
                         string credito1 = refTelecom.Substring(11, 3) + "0";
 
                         //agrega un 0 intermedio y completa el numero de crédito
                         string intentoReal1 = credito1 + refTelecom.Substring(14, 5);
 
-                        //busca ek credito en el rep analitico
-                        int intentoBuscar = buscaCredit(intentoReal1);
+                        //busca el credito en el rep analitico
+                        LRepCartera repC = new LRepCartera();
+                        int intentoBuscar = repC.buscaCredit(intentoReal1, TableAnalitico);
+                        //int intentoBuscar = buscaCredit(intentoReal1);
 
                         if (intentoBuscar == 0)
                         {
                             string credito2 = refTelecom.Substring(11, 3) + "00";
                             string intentoReal2 = credito2 + refTelecom.Substring(14, 5);
-                            int intentoBuscar2 = buscaCredit(intentoReal2);
+                            int intentoBuscar2 = repC.buscaCredit(intentoReal2, TableAnalitico);                                
 
                             if (intentoBuscar2 == 1)
                             {
@@ -213,7 +171,6 @@ namespace Identifica.Presentacion
                             }
                             else
                             {
-
                                 TableNoidentificado.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], filaTelecom["fecha"], filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
                             }
                         }
@@ -223,28 +180,11 @@ namespace Identifica.Presentacion
                         }
                     }
                 }
-
                 TotalRegistros();
             }
             else {
                 Alerta("No se han adjuntado ninguno de los archivos necesarios");
             }
-        }
-
-
-        private int buscaCredit(string credito)
-        {
-            int intento = 0;
-            foreach (DataRow filaCartera in TableAnalitico.Rows)
-            {
-                string creditCartera = Convert.ToString(filaCartera["credito"]);
-                
-                if (credito == creditCartera) {
-                    intento = 1;
-                    return intento;
-                }                
-            }
-            return intento;
         }
 
         private void TotalRegistros() {
@@ -257,8 +197,7 @@ namespace Identifica.Presentacion
         }
 
         private void lblNoIdentificados_DoubleClick(object sender, EventArgs e)
-        {
-           
+        {           
         }
 
         private void lblNoIdentificados_Click(object sender, EventArgs e)
@@ -286,7 +225,6 @@ namespace Identifica.Presentacion
 
             if (dgvlista.Rows.Count > 0)
             {
-
                 Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
                 Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
@@ -321,7 +259,6 @@ namespace Identifica.Presentacion
                     ii++;
                 }
 
-
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Archivos de Excel|*.xlsx";
                 saveFileDialog.Title = "Guardar archivo";
@@ -347,7 +284,6 @@ namespace Identifica.Presentacion
         private void ptbExportar_Click(object sender, EventArgs e)
         {
             exportExcel();
-
         }
 
         private void ptbExportar_MouseEnter(object sender, EventArgs e)
@@ -356,8 +292,7 @@ namespace Identifica.Presentacion
         }
 
         private void ptbExportar_MouseHover(object sender, EventArgs e)
-        {
-           
+        {           
         }
 
         private void ptbExportar_MouseLeave(object sender, EventArgs e)

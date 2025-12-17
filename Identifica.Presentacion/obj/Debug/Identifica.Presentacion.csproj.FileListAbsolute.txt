@@ -115,3 +115,5 @@ D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Pr
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.FrmNoIdentificados.resources
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.csproj.ResolveComReference.cache
 D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\obj\Debug\Identifica.Presentacion.csprojAssemblyReference.cache
+D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\bin\Debug\Identifica.Logica.dll
+D:\VsProjects\IdentificaCreditos\Identifica.Presentacion\bin\Debug\Identifica.Logica.pdb

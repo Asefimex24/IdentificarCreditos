@@ -168,5 +168,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Identifica.Logica\Identifica.Logica.csproj">
+      <Project>{86a29fcc-ca6c-4b28-9f51-0374ffd256e8}</Project>
+      <Name>Identifica.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

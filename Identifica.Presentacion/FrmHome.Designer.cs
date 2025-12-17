@@ -256,7 +256,7 @@
             this.lblNoIdentificados.TabIndex = 50;
             this.lblNoIdentificados.Text = "000";
             this.lblNoIdentificados.Click += new System.EventHandler(this.lblNoIdentificados_Click);
-            this.lblNoIdentificados.DoubleClick += new System.EventHandler(this.lblNoIdentificados_DoubleClick);
+           
             // 
             // btnNuevo
             // 
@@ -300,8 +300,7 @@
             this.ptbExportar.TabStop = false;
             this.ptbExportar.Click += new System.EventHandler(this.ptbExportar_Click);
             this.ptbExportar.MouseEnter += new System.EventHandler(this.ptbExportar_MouseEnter);
-            this.ptbExportar.MouseLeave += new System.EventHandler(this.ptbExportar_MouseLeave);
-            this.ptbExportar.MouseHover += new System.EventHandler(this.ptbExportar_MouseHover);
+            this.ptbExportar.MouseLeave += new System.EventHandler(this.ptbExportar_MouseLeave);            
             // 
             // FrmHome
             // 

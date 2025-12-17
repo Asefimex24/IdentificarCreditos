@@ -196,10 +196,6 @@ namespace Identifica.Presentacion
             }
         }
 
-        private void lblNoIdentificados_DoubleClick(object sender, EventArgs e)
-        {           
-        }
-
         private void lblNoIdentificados_Click(object sender, EventArgs e)
         {
             if (TableNoidentificado.Rows.Count > 0)
@@ -221,78 +217,15 @@ namespace Identifica.Presentacion
             }           
         }
 
-        public void exportExcel() {
-
-            if (dgvlista.Rows.Count > 0)
-            {
-                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                app.Visible = false;
-                worksheet = workbook.Sheets["Hoja1"];
-                worksheet = workbook.ActiveSheet;
-                worksheet.Name = "Telecom_Identificados";
-
-                // Cabeceras
-                for (int i = 0; i < dgvlista.Columns.Count + 1; i++)
-                {
-                    if (i > 0 && i < dgvlista.Columns.Count + 1)
-                    {
-                        worksheet.Cells[1, i] = dgvlista.Columns[i - 1].HeaderText;
-                    }
-                }
-
-                // recorre las filas del datagrid y vacia los valores en el worksheet de Excel
-                int ii = 2;
-                foreach (DataGridViewRow fila in dgvlista.Rows)
-                {
-                    int j = 1;
-                    foreach (DataGridViewCell celda in fila.Cells)
-                    {
-                        if (j == 2)
-                        {
-                            worksheet.Cells[ii, j].NumberFormat = "@";
-                        }
-                        worksheet.Cells[ii, j] = Convert.ToString(celda.Value).ToString();
-                        j++;
-                    }
-                    ii++;
-                }
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Archivos de Excel|*.xlsx";
-                saveFileDialog.Title = "Guardar archivo";
-
-                DateTime fecha = DateTime.Today;
-                string fechaHoy = fecha.Day.ToString() + fecha.Month.ToString() + fecha.Year.ToString() + fecha.Minute.ToString() + fecha.Second.ToString();
-
-                saveFileDialog.FileName = "TelecomExport_" + fechaHoy;
-                saveFileDialog.ShowDialog();
-
-                if (saveFileDialog.FileName != "")
-                {
-                    Console.WriteLine("Ruta en: " + saveFileDialog.FileName);
-                    workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    app.Quit();
-                }
-            }
-            else {
-                Alerta("No existen datos para exportar...");
-            }
-        }
-
         private void ptbExportar_Click(object sender, EventArgs e)
-        {
-            exportExcel();
+        {           
+            FrmExportRep exprep = new FrmExportRep();
+            exprep.ExporToPdf(dgvlista);
         }
 
         private void ptbExportar_MouseEnter(object sender, EventArgs e)
         {
             ptbExportar.BorderStyle = BorderStyle.FixedSingle;
-        }
-
-        private void ptbExportar_MouseHover(object sender, EventArgs e)
-        {           
         }
 
         private void ptbExportar_MouseLeave(object sender, EventArgs e)

@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNoIdentificados = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.lblTotalIdentificado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -247,12 +248,12 @@
             // lblTotalRegistros
             // 
             this.lblTotalRegistros.AutoSize = true;
-            this.lblTotalRegistros.Location = new System.Drawing.Point(952, 679);
+            this.lblTotalRegistros.Location = new System.Drawing.Point(958, 679);
             this.lblTotalRegistros.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(131, 14);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(150, 14);
             this.lblTotalRegistros.TabIndex = 48;
-            this.lblTotalRegistros.Text = "Registros en la lista";
+            this.lblTotalRegistros.Text = "Créditos Identificados:";
             // 
             // label2
             // 
@@ -298,12 +299,24 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // lblTotalIdentificado
+            // 
+            this.lblTotalIdentificado.AutoSize = true;
+            this.lblTotalIdentificado.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalIdentificado.Location = new System.Drawing.Point(1116, 679);
+            this.lblTotalIdentificado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalIdentificado.Name = "lblTotalIdentificado";
+            this.lblTotalIdentificado.Size = new System.Drawing.Size(34, 14);
+            this.lblTotalIdentificado.TabIndex = 52;
+            this.lblTotalIdentificado.Text = "000";
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1163, 713);
+            this.Controls.Add(this.lblTotalIdentificado);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblNoIdentificados);
             this.Controls.Add(this.label2);
@@ -354,5 +367,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblNoIdentificados;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Label lblTotalIdentificado;
     }
 }

@@ -111,6 +111,8 @@ namespace Identifica.Presentacion
 
                     valorX++;
                 }
+                btnAdTelecom.BackColor = Color.ForestGreen;
+                btnAdTelecom.Text = "Archivo Cargado";
                 lblCtasTelecom.Text = "Registros Cargados: " + (valorX - 3).ToString();
             }
         }
@@ -119,13 +121,14 @@ namespace Identifica.Presentacion
         {
             OpenFileDialog cargar = new OpenFileDialog();                
             cargar = cargar_archivos();
-
+            
             if (cargar.FileName != "")
-            {               
+            {
+           
                 AnalitoCarteraPath = cargar.FileName;                
                 TableAnalitico = new DataTable("RepAnalitico");
                 DataColumn numCredit = new DataColumn("credito");
-
+                
                 TableAnalitico.Columns.Add(numCredit);
                 
                 //crea el objeto y se carga la ruta del archivo de Reporte Analitico de Cartera
@@ -137,6 +140,8 @@ namespace Identifica.Presentacion
                     TableAnalitico.Rows.Add(Cartera.GetCellValueAsString(valorXCartera, 2));
                     valorXCartera++;
                 }
+                btnAdAnalitico.BackColor = Color.ForestGreen;
+                btnAdAnalitico.Text = "Archivo Cargado";
                 lblCreditosCargados.Text= "Créditos Cargados: " +(valorXCartera-10).ToString();                                            
             }
         }
@@ -153,7 +158,6 @@ namespace Identifica.Presentacion
                     //extrae la fecha de nac
                     string fechaNac = refTelecom.Substring(5,4);
                     
-
                     string creditoBien;
 
                     if (Convert.ToInt64(fechaNac) == 0)
@@ -216,7 +220,7 @@ namespace Identifica.Presentacion
 
         private void TotalRegistros() {
             if (dgvlista.Rows.Count > 0) {
-                lblTotalRegistros.Text = lblTotalRegistros.Text + dgvlista.Rows.Count.ToString();
+                lblTotalIdentificado.Text = dgvlista.Rows.Count.ToString();
             }
             if (TableNoidentificado.Rows.Count > 0) {
                 lblNoIdentificados.Text = TableNoidentificado.Rows.Count.ToString();
@@ -239,10 +243,14 @@ namespace Identifica.Presentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            TableAnalitico.Clear();
-            TableCtaTelecomm.Clear();
-            TableNoidentificado.Clear();
-            dgvlista.Rows.Clear();
+            if (TableAnalitico.Rows.Count > 0 && TableCtaTelecomm.Rows.Count>0 && dgvlista.Rows.Count>0) {
+                TableAnalitico.Clear();
+                TableCtaTelecomm.Clear();
+                TableNoidentificado.Clear();
+                dgvlista.Rows.Clear();
+                lblNoIdentificados.Text = "000";
+                lblTotalIdentificado.Text = "000";
+            }            
         }
     }
 }

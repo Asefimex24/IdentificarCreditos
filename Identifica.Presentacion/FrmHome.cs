@@ -90,7 +90,7 @@ namespace Identifica.Presentacion
                 {
                     btnAdTelecom.BackColor = Color.ForestGreen;
                     btnAdTelecom.Text = "Archivo Cargado";
-                    lblCtasTelecom.Text = "Registros Cargados: " + TableCtaTelecomm.Rows.Count.ToString();
+                    lblCtasTelecom.Text = "Registros Leidos: " + TableCtaTelecomm.Rows.Count.ToString();
                 }
                 else {
                     Alerta("Ocurrió un error al cargar los datos de Telecomm");
@@ -152,6 +152,12 @@ namespace Identifica.Presentacion
                 TableCtaTelecomm.Clear();
                 TableNoidentificado.Clear();
                 dgvlista.Rows.Clear();
+                btnAdAnalitico.Text = "Adjuntar Analitico";
+                btnAdTelecom.Text = "Adjuntar Telecom";
+                btnAdAnalitico.BackColor = System.Drawing.SystemColors.HotTrack;                
+                btnAdTelecom.BackColor = System.Drawing.SystemColors.HotTrack;
+                lblCreditosCargados.Text = "";
+                lblCtasTelecom.Text = "";
                 lblNoIdentificados.Text = "000";
                 lblTotalIdentificado.Text = "000";
             }           

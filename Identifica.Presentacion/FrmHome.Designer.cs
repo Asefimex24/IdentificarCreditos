@@ -58,27 +58,25 @@
             // lblCreditosCargados
             // 
             this.lblCreditosCargados.AutoSize = true;
-            this.lblCreditosCargados.Location = new System.Drawing.Point(267, 118);
+            this.lblCreditosCargados.Location = new System.Drawing.Point(273, 85);
             this.lblCreditosCargados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreditosCargados.Name = "lblCreditosCargados";
-            this.lblCreditosCargados.Size = new System.Drawing.Size(130, 14);
+            this.lblCreditosCargados.Size = new System.Drawing.Size(0, 14);
             this.lblCreditosCargados.TabIndex = 43;
-            this.lblCreditosCargados.Text = "Créditos Cargados:";
             // 
             // lblCtasTelecom
             // 
             this.lblCtasTelecom.AutoSize = true;
-            this.lblCtasTelecom.Location = new System.Drawing.Point(13, 118);
+            this.lblCtasTelecom.Location = new System.Drawing.Point(16, 85);
             this.lblCtasTelecom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCtasTelecom.Name = "lblCtasTelecom";
-            this.lblCtasTelecom.Size = new System.Drawing.Size(113, 14);
+            this.lblCtasTelecom.Size = new System.Drawing.Size(0, 14);
             this.lblCtasTelecom.TabIndex = 42;
-            this.lblCtasTelecom.Text = "Reporte Analitico";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(267, 48);
+            this.label3.Location = new System.Drawing.Point(267, 28);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 14);
@@ -95,7 +93,7 @@
             this.btnAdAnalitico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdAnalitico.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdAnalitico.ForeColor = System.Drawing.Color.White;
-            this.btnAdAnalitico.Location = new System.Drawing.Point(270, 69);
+            this.btnAdAnalitico.Location = new System.Drawing.Point(270, 49);
             this.btnAdAnalitico.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdAnalitico.Name = "btnAdAnalitico";
             this.btnAdAnalitico.Size = new System.Drawing.Size(150, 30);
@@ -114,7 +112,7 @@
             this.btnAdTelecom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdTelecom.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdTelecom.ForeColor = System.Drawing.Color.White;
-            this.btnAdTelecom.Location = new System.Drawing.Point(13, 69);
+            this.btnAdTelecom.Location = new System.Drawing.Point(13, 49);
             this.btnAdTelecom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAdTelecom.Name = "btnAdTelecom";
             this.btnAdTelecom.Size = new System.Drawing.Size(150, 30);
@@ -126,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 48);
+            this.label1.Location = new System.Drawing.Point(13, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 14);
@@ -143,7 +141,7 @@
             this.btnProcesar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcesar.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcesar.ForeColor = System.Drawing.Color.White;
-            this.btnProcesar.Location = new System.Drawing.Point(581, 69);
+            this.btnProcesar.Location = new System.Drawing.Point(581, 49);
             this.btnProcesar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnProcesar.Name = "btnProcesar";
             this.btnProcesar.Size = new System.Drawing.Size(150, 30);
@@ -167,12 +165,12 @@
             this.monto,
             this.cent,
             this.ac});
-            this.dgvlista.Location = new System.Drawing.Point(12, 159);
+            this.dgvlista.Location = new System.Drawing.Point(12, 106);
             this.dgvlista.Name = "dgvlista";
             this.dgvlista.ReadOnly = true;
             this.dgvlista.RowHeadersVisible = false;
             this.dgvlista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvlista.Size = new System.Drawing.Size(1139, 507);
+            this.dgvlista.Size = new System.Drawing.Size(1139, 570);
             this.dgvlista.TabIndex = 46;
             // 
             // A
@@ -256,7 +254,6 @@
             this.lblNoIdentificados.TabIndex = 50;
             this.lblNoIdentificados.Text = "000";
             this.lblNoIdentificados.Click += new System.EventHandler(this.lblNoIdentificados_Click);
-           
             // 
             // btnNuevo
             // 
@@ -268,7 +265,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(1088, 69);
+            this.btnNuevo.Location = new System.Drawing.Point(1088, 9);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(62, 30);
@@ -292,7 +289,7 @@
             // 
             this.ptbExportar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptbExportar.Image = ((System.Drawing.Image)(resources.GetObject("ptbExportar.Image")));
-            this.ptbExportar.Location = new System.Drawing.Point(1110, 113);
+            this.ptbExportar.Location = new System.Drawing.Point(1110, 49);
             this.ptbExportar.Name = "ptbExportar";
             this.ptbExportar.Size = new System.Drawing.Size(40, 40);
             this.ptbExportar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -300,7 +297,7 @@
             this.ptbExportar.TabStop = false;
             this.ptbExportar.Click += new System.EventHandler(this.ptbExportar_Click);
             this.ptbExportar.MouseEnter += new System.EventHandler(this.ptbExportar_MouseEnter);
-            this.ptbExportar.MouseLeave += new System.EventHandler(this.ptbExportar_MouseLeave);            
+            this.ptbExportar.MouseLeave += new System.EventHandler(this.ptbExportar_MouseLeave);
             // 
             // FrmHome
             // 

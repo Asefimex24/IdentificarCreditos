@@ -280,7 +280,9 @@ namespace Identifica.Presentacion
                     int j = 1;
                     foreach (DataGridViewCell celda in fila.Cells)
                     {
-
+                        if (j == 2) {
+                            worksheet.Cells[ii, j].NumberFormat = "@";
+                        }
                         worksheet.Cells[ii, j] = Convert.ToString(celda.Value).ToString();                        
                         j++;
 
@@ -288,8 +290,6 @@ namespace Identifica.Presentacion
                     ii++;
                 }
 
-                //worksheet.Columns["REFERENCIA"].NumberFormat = "@";
-                worksheet.Columns[1].NumerFormat = "@";
 
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Archivos de Excel|*.xlsx";
@@ -313,7 +313,7 @@ namespace Identifica.Presentacion
         private void ptbExportar_Click(object sender, EventArgs e)
         {
             exportExcel();
-            //test_excel();
+
         }
 
         private void ptbExportar_MouseEnter(object sender, EventArgs e)
@@ -331,52 +331,5 @@ namespace Identifica.Presentacion
             ptbExportar.BorderStyle = BorderStyle.None;
         }
 
-        private void test_excel() {
-
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-            app.Visible = false;
-            worksheet = workbook.Sheets["Hoja1"];
-            worksheet = workbook.ActiveSheet;
-            worksheet.Name = "Telecom_Identificados";
-
-            // Cabeceras
-            for (int i = 0; i < dgvlista.Columns.Count + 1; i++)
-            {
-                if (i > 0 && i < dgvlista.Columns.Count+1)
-                {
-                    worksheet.Cells[1, i] = dgvlista.Columns[i - 1].HeaderText;
-                   
-                }
-            }
-
-
-
-            int ii = 1;
-            foreach (DataGridViewRow fila in dgvlista.Rows) {
-
-                int j = 1;
-                foreach (DataGridViewCell celda in fila.Cells) {
-                    worksheet.Cells[ii, j] = celda.Value.ToString();
-                    MessageBox.Show(celda.Value.ToString());
-                    j++;
-                }
-                ii++;
-            }
-
-            // Valores
-            //for (int i = 0; i < dgvlista.Rows.Count + 1; i++)
-            //{
-            //    for (int j = 0; j < dgvlista.Columns.Count; j++)
-            //    {
-            //        if (j > 0 && j < dgvlista.Columns.Count + 1)
-            //        {
-            //            worksheet.Cells[i + 2, j + 1] = dgvlista.Rows[i].Cells[j].Value.ToString();
-            //            MessageBox.Show(dgvlista.Rows[i].Cells[j].Value.ToString());
-            //        }
-            //    }
-            //}
-        }
     }
 }

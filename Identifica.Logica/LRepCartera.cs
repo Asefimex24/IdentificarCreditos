@@ -46,14 +46,23 @@ namespace Identifica.Logica
         {
             int intento = 0;
             foreach (DataRow filaCartera in cartera.Rows)
-            {
+            {   
                 string creditCartera = Convert.ToString(filaCartera["credito"]);
+
+                //extraer ultimos 4 digitos del credito
+                string digitosCredito = credito.Substring(credito.Length - 5, 4);
+                //extraer ultimos 4 digitos del credito en cartera
+                string digitosCredCartera = creditCartera.Substring(creditCartera.Length - 5, 4);
+
+                
 
                 if (credito == creditCartera)
                 {
                     intento = 1;
                     return intento;
                 }
+
+
             }
             return intento;
         }

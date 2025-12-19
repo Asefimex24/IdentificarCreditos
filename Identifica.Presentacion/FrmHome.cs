@@ -32,7 +32,18 @@ namespace Identifica.Presentacion
         {
             InicializarDatatableNoIdentificados();
             iniciaTblTelecom();
-            iniciaTblCartera();            
+            iniciaTblCartera();
+            settooltip();
+
+            HelpProviderBotones();
+            
+        }
+
+        private void HelpProviderBotones() {
+            hlpAyuda = new HelpProvider();
+            hlpAyuda.SetShowHelp(this.btnAdTelecom, true);
+            hlpAyuda.SetHelpString(this.btnAdTelecom, "Las columnas que deben contener el archivo son las siguientes:" +
+                 " |  A | REFERENCIA | FECHA | MONTO | CENTAVOS | A |");
         }
 
         private void InicializarDatatableNoIdentificados() {
@@ -49,6 +60,17 @@ namespace Identifica.Presentacion
             LRepCartera crt = new LRepCartera();
             this.TableAnalitico = crt.iniciaTableCartera();
         }
+
+
+        string mensaje1 = "El archivo de Telecom debe contener las siguentes columnas:" +
+            "  A - REFERENCIA - FECHA - MONTO - CENTAVOS - A ";
+
+        private void settooltip() {
+            FrmProcess pr = new FrmProcess();
+            pr.setTooltip(btnAdTelecom, mensaje1);
+
+        }
+
 
         private OpenFileDialog cargar_archivos()
         {

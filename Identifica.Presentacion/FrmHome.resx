@@ -185,6 +185,9 @@
         dVPh6fII5W53a+NsddnG0ez8HF3ZKBgFo2AUDH0AAES2e5Unr8i3AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="hlpAyuda.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEARkYAAAEAIAAAUAAAFgAAACgAAABGAAAAjAAAAAEAIAAAAAAA2E8AABMLAAATCwAAAAAAAAAA

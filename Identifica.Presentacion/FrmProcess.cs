@@ -51,8 +51,10 @@ namespace Identifica.Presentacion
 
                     //busca el credito en el rep analitico
                     LRepCartera repC = new LRepCartera();
-                    int intentoBuscar = repC.buscaCredit(intentoReal1, cartera);
+                    //int intentoBuscar = repC.buscaCredit(intentoReal1, cartera);
                     //int intentoBuscar = buscaCredit(intentoReal1);
+
+                    int intentoBuscar = buscaCredit(intentoReal1, cartera);
 
                     if (intentoBuscar == 0)
                     {
@@ -142,6 +144,40 @@ namespace Identifica.Presentacion
                 FrmNoIdentificados nid = new FrmNoIdentificados();
                 nid.alerta("No hay datos para exportar...");
             }
+        }
+
+
+        public int buscaCredit(string credito, DataTable cartera)
+        {
+            int intento = 0;
+            foreach (DataRow filaCartera in cartera.Rows)
+            {
+                string creditCartera = Convert.ToString(filaCartera["credito"]);
+
+                //Validar si los ultimos 4 digitos del credito se encuentra mas de una vez
+
+                ////extraer ultimos 4 digitos del creditos
+                //string digitosCredito = credito.Substring(credito.Length - 4, 4);
+                ////extraer ultimos 4 digitos del credito en cartera
+                //string digitosCredCartera = creditCartera.Substring(creditCartera.Length - 4, 4);
+
+                //if (digitosCredito == digitosCredCartera) {
+                //    MessageBox.Show(digitosCredito + "     " + digitosCredCartera);
+                //}                
+
+                if (credito == creditCartera)
+                {
+                    intento = 1;
+                    return intento;
+                }
+            }
+            return intento;
+        }
+
+        public void setTooltip(Control control, string mensaje) {
+            ToolTip tlp = new ToolTip();
+            tlp.SetToolTip(control, mensaje);
+            
         }
     }
 }

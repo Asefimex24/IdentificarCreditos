@@ -51,6 +51,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTotalIdentificado = new System.Windows.Forms.Label();
             this.ptbExportar = new System.Windows.Forms.PictureBox();
+            this.hlpAyuda = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.dgvlista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbExportar)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             this.lblCreditosCargados.Location = new System.Drawing.Point(273, 85);
             this.lblCreditosCargados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreditosCargados.Name = "lblCreditosCargados";
-            this.lblCreditosCargados.Size = new System.Drawing.Size(0, 14);
+            this.lblCreditosCargados.Size = new System.Drawing.Size(0, 18);
             this.lblCreditosCargados.TabIndex = 43;
             // 
             // lblCtasTelecom
@@ -70,7 +71,7 @@
             this.lblCtasTelecom.Location = new System.Drawing.Point(16, 85);
             this.lblCtasTelecom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCtasTelecom.Name = "lblCtasTelecom";
-            this.lblCtasTelecom.Size = new System.Drawing.Size(0, 14);
+            this.lblCtasTelecom.Size = new System.Drawing.Size(0, 18);
             this.lblCtasTelecom.TabIndex = 42;
             // 
             // label3
@@ -79,7 +80,7 @@
             this.label3.Location = new System.Drawing.Point(267, 28);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 14);
+            this.label3.Size = new System.Drawing.Size(151, 18);
             this.label3.TabIndex = 41;
             this.label3.Text = "Carga Rep Analítico";
             // 
@@ -127,7 +128,7 @@
             this.label1.Location = new System.Drawing.Point(13, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 14);
+            this.label1.Size = new System.Drawing.Size(185, 18);
             this.label1.TabIndex = 38;
             this.label1.Text = "Cargar edo cta Telecom";
             // 
@@ -227,7 +228,7 @@
             this.lblTotalRegistros.Location = new System.Drawing.Point(958, 679);
             this.lblTotalRegistros.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(150, 14);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(175, 18);
             this.lblTotalRegistros.TabIndex = 48;
             this.lblTotalRegistros.Text = "Créditos Identificados:";
             // 
@@ -238,7 +239,7 @@
             this.label2.Location = new System.Drawing.Point(14, 679);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 16);
+            this.label2.Size = new System.Drawing.Size(155, 20);
             this.label2.TabIndex = 49;
             this.label2.Text = "No identificados:";
             // 
@@ -250,7 +251,7 @@
             this.lblNoIdentificados.Location = new System.Drawing.Point(134, 679);
             this.lblNoIdentificados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNoIdentificados.Name = "lblNoIdentificados";
-            this.lblNoIdentificados.Size = new System.Drawing.Size(35, 16);
+            this.lblNoIdentificados.Size = new System.Drawing.Size(45, 20);
             this.lblNoIdentificados.TabIndex = 50;
             this.lblNoIdentificados.Text = "000";
             this.lblNoIdentificados.Click += new System.EventHandler(this.lblNoIdentificados_Click);
@@ -281,7 +282,7 @@
             this.lblTotalIdentificado.Location = new System.Drawing.Point(1116, 679);
             this.lblTotalIdentificado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalIdentificado.Name = "lblTotalIdentificado";
-            this.lblTotalIdentificado.Size = new System.Drawing.Size(34, 14);
+            this.lblTotalIdentificado.Size = new System.Drawing.Size(41, 18);
             this.lblTotalIdentificado.TabIndex = 52;
             this.lblTotalIdentificado.Text = "000";
             // 
@@ -301,7 +302,7 @@
             // 
             // FrmHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1163, 713);
@@ -320,6 +321,7 @@
             this.Controls.Add(this.btnAdTelecom);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmHome";
@@ -356,5 +358,6 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTotalIdentificado;
         private System.Windows.Forms.PictureBox ptbExportar;
+        private System.Windows.Forms.HelpProvider hlpAyuda;
     }
 }

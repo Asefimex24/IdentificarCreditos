@@ -33,10 +33,7 @@ namespace Identifica.Presentacion
             InicializarDatatableNoIdentificados();
             iniciaTblTelecom();
             iniciaTblCartera();
-            settooltip();
-
-            HelpProviderBotones();
-            
+            settooltip();                        
         }
 
         private void HelpProviderBotones() {
@@ -65,10 +62,13 @@ namespace Identifica.Presentacion
         string mensaje1 = "El archivo de Telecom debe contener las siguentes columnas:" +
             "  A - REFERENCIA - FECHA - MONTO - CENTAVOS - A ";
 
+        string mensaje2 = "Descargue el Reporte Analítico de Cartera, únicamente abra el archivo para " +
+            "permitir la edición y ajuste la visualización de la columna #Crédito";
+
         private void settooltip() {
             FrmProcess pr = new FrmProcess();
             pr.setTooltip(btnAdTelecom, mensaje1);
-
+            pr.setTooltip(btnAdAnalitico, mensaje2);
         }
 
 

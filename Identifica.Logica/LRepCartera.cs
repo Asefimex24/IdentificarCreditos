@@ -53,16 +53,12 @@ namespace Identifica.Logica
                 string digitosCredito = credito.Substring(credito.Length - 5, 4);
                 //extraer ultimos 4 digitos del credito en cartera
                 string digitosCredCartera = creditCartera.Substring(creditCartera.Length - 5, 4);
-
                 
-
                 if (credito == creditCartera)
                 {
                     intento = 1;
                     return intento;
                 }
-
-
             }
             return intento;
         }

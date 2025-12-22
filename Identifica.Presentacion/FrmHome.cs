@@ -189,7 +189,7 @@ namespace Identifica.Presentacion
         private void ptbExportar_Click(object sender, EventArgs e)
         {
             FrmProcess exprep = new FrmProcess();            
-            exprep.ExporToPdf(dgvlista);
+            exprep.ExporToPdf(dgvlista,"CreditosEncontrados");
         }
 
         private void ptbExportar_MouseEnter(object sender, EventArgs e)

@@ -63,7 +63,7 @@ namespace Identifica.Presentacion
         private void ptbExportar_Click(object sender, EventArgs e)
         {
             FrmProcess pross = new FrmProcess();
-            pross.exportPDFNoIdentificados(this.dataGridView1);
+            pross.ExporToPdf(dataGridView1, "NoIdentificados");
         }
     }
 }

@@ -117,24 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ptbExportar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAx1JREFUaENjYBgFo2AUjIJhCTg7XaR42z18udtdGzhbXDZzNDk9Q1czOEC9PYvg
-        lGBtoUl+cYITfCcK9Pvs5u/xesPb7fmfp9PjP3e723+uVpf/nM3O/9G10h0Iz0nilVwYaSM5NzxNbE7Y
-        RLGZIUdEpgd9F54a+F9ocsB/wYl+/wX6ff/z93r/H3APyC3NFJRdlWgjuzwhX2Zp3CLpJbFXpRZF/ZVc
-        EPlfYl7Ef/E5Yf/FZoX+F50R/H9QekBhTfJ/+VVJ/+VWJPyXXRb3X2ZJ7H+pRdH/KfGA4RF3srDBEbfD
-        6O4jCAaTB0AY3X0EwagHRj0wCD2ADGAOwwdGPYDsgdrTi1AMz9o/CcUDqrPj/n/8+RUuX3Ng7uDygPzS
-        +P/X3z+CG37r/ZP/ErPD4B6Ydn4jXO76m4f/hXp9MTyA7CBSMbr7CAJ0D4CSUOiuVrgjQSBuZxfYAwaL
-        0v7/+PMLLu6zqhJrEkJ3FCkY3X0EATYPgPLA1gen4A499+o22AMrbuyHi628vn9w5gGYB8zX5KGEdsru
-        3v9//v0Fs0F5QG1W3OD2AKgU6r+wDm7J+x9f4OyKA7MGbymE7AGlRfH/n315g2LZ5df3/4tMCsDrAWQH
-        kYrR3UcQ4POA6uLE/8++vkXxwKNPr/5LTQ0dGh5YdGMP3OEvvr6Ds7tPrcTrAWQAcxg+QBMPBGxv/P/v
-        /z+wBd9///wfu6MDbiEoc5suyBi8HlBYGv//5vsncAsmnl8PLkb3PjwPFzvy+PJ/gV6fwemB/ovr4YZ/
-        +Pnlv9rCRLAH7FYW/v/7DxIrIJC0pROrB5AdRCpGdx9BgO4Bh01l/38ilf+NJ5egtIXW3z4Cl3vx5d1/
-        mUkhg8cD8svj/596dQvuwOdf3/1XWBCL4gGTxZn/f//9A1cz4+xGDA8gA5jD8AGqeQC9FBqSzelRDwxk
-        Hhj1wKgHhrgHDA67HUJ3H0Ew5Ad3sQHw8PqCKGOJuWFxg354nWiANMEhMMGvg7/PZ/OgneAgGvxnYOTr
-        dVPh6fII5W53a+NsddnG0ez8HF3ZKBgFo2AUDH0AAES2e5Unr8i3AAAAAElFTkSuQmCC
-</value>
-  </data>
+  <metadata name="A.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="referencia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="creditOK.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="AB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="monto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ac.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="A.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="referencia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="creditOK.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="AB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="monto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ac.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

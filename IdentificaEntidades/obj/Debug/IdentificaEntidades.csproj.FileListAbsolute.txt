@@ -1,0 +1,6 @@
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\bin\Debug\IdentificaEntidades.dll
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\bin\Debug\IdentificaEntidades.pdb
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\obj\Debug\IdentificaEntidades.csprojAssemblyReference.cache
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\obj\Debug\IdentificaEntidades.csproj.CoreCompileInputs.cache
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\obj\Debug\IdentificaEntidades.dll
+D:\VsProjects\IdentificaCreditos\IdentificaEntidades\obj\Debug\IdentificaEntidades.pdb

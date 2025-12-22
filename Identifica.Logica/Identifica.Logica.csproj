@@ -66,5 +66,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IdentificaEntidades\IdentificaEntidades.csproj">
+      <Project>{8c6a02d2-dbb4-41d2-bf75-25cf9de48aab}</Project>
+      <Name>IdentificaEntidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

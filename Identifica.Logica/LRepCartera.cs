@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using SpreadsheetLight;
+using IdentificaEntidades;
 
 namespace Identifica.Logica
 {
@@ -14,6 +15,7 @@ namespace Identifica.Logica
         public DataTable setRepCarteraTable() {
 
             DataTable TableAnalitico = new DataTable("RepAnalitico");
+
             DataColumn numCredit = new DataColumn("credito");
             DataColumn nombCliente = new DataColumn("cliente");
 
@@ -26,6 +28,16 @@ namespace Identifica.Logica
         public DataTable iniciaTableCartera() {
             DataTable cartera = new DataTable();
             return cartera;
+        }
+
+
+        public DataTable setTableSimilares() {
+            DataTable repetidos = new DataTable("Repetidos");
+
+            DataColumn numCredit = new DataColumn("credito");
+            DataColumn nombCliente = new DataColumn("cliente");
+
+            return repetidos;
         }
 
         public DataTable loadCartera(DataTable tabla, SLDocument documento) {
@@ -61,6 +73,34 @@ namespace Identifica.Logica
                 }
             }
             return intento;
+        }
+
+
+        //busca creditos parecidos en sus ultimos 4 dígitos
+        public DataTable buscaRepetido(string credito, DataTable cartera) {
+            
+            DataTable repetidos = new DataTable("Repetidos");            
+
+            DataColumn numCredit = new DataColumn("credito");
+            DataColumn nombCliente = new DataColumn("cliente");
+
+            foreach (DataRow filaCartera in cartera.Rows)
+            {
+                string creditCartera = Convert.ToString(filaCartera["credito"]);
+
+                //extraer ultimos 4 digitos del credito
+                string digitosCredito = credito.Substring(credito.Length - 5, 4);
+
+                //extraer ultimos 4 digitos del credito en cartera
+                string digitosCredCartera = creditCartera.Substring(creditCartera.Length - 5, 4);
+
+                if (digitosCredito == digitosCredCartera) {
+
+                    repetidos.Rows.Add(Convert.ToString(filaCartera["credito"]), Convert.ToString(filaCartera["cliente"]));
+
+                }
+            }
+            return repetidos;
         }
     }
 }

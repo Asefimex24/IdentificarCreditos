@@ -24,7 +24,7 @@ namespace Identifica.Presentacion
 
         }
 
-        public void procesoIdentificaCreditos(DataTable cartera, DataTable telecom,DataTable noIdentificados, DataGridView dgv )
+        public void procesoIdentificaCreditos(DataTable cartera, DataTable telecom,DataTable noIdentificados, DataGridView dgv,DataTable similares )
         {
             string refTelecom = "";
             foreach (DataRow filaTelecom in telecom.Rows)
@@ -38,15 +38,18 @@ namespace Identifica.Presentacion
 
                 if (Convert.ToInt64(fechaNac) == 0)
                 {
+
                     creditoBien = refTelecom.Substring(9, 10);
                     dgv.Rows.Add(filaTelecom["A1"], filaTelecom["Referencia"], creditoBien, Convert.ToString(filaTelecom["fecha"]), filaTelecom["A2"], filaTelecom["Monto"], filaTelecom["Centavos"], filaTelecom["A3"]);
+
                 }
                 else if (Convert.ToInt64(fechaNac) > 0)
                 {
-                    //obtiene los dos primeros digitos del crédito
+
+                    //obtiene los dos primeros digitos del crédito y agrega un Cero para la primera búsqueda
                     string credito1 = refTelecom.Substring(11, 3) + "0";
 
-                    //agrega un 0 intermedio y completa el numero de crédito
+                    //completa el numero de crédito
                     string intentoReal1 = credito1 + refTelecom.Substring(14, 5);
 
                     //busca el credito en el rep analitico
@@ -127,7 +130,7 @@ namespace Identifica.Presentacion
                 saveFileDialog.Title = "Guardar archivo";
 
                 DateTime fecha = DateTime.Today;
-                string fechaHoy = fecha.Day.ToString() + fecha.Month.ToString() + fecha.Year.ToString() + fecha.Minute.ToString() + fecha.Second.ToString();
+                string fechaHoy = fecha.Day.ToString() + fecha.Month.ToString() + fecha.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString();
 
                 saveFileDialog.FileName = "TelecomExport_" + fechaHoy;
                 saveFileDialog.ShowDialog();
@@ -178,6 +181,71 @@ namespace Identifica.Presentacion
             ToolTip tlp = new ToolTip();
             tlp.SetToolTip(control, mensaje);
             
+        }
+
+        public void exportPDFNoIdentificados(DataGridView dgv) {
+
+
+            if (dgv.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                app.Visible = false;
+                worksheet = workbook.Sheets["Hoja1"];
+                worksheet = workbook.ActiveSheet;
+                worksheet.Name = "No_Identificados";
+
+                // Cabeceras
+                for (int i = 0; i < dgv.Columns.Count + 1; i++)
+                {
+                    if (i > 0 && i < dgv.Columns.Count + 1)
+                    {
+                        worksheet.Cells[1, i] = dgv.Columns[i - 1].HeaderText;
+                    }
+                }
+
+                // recorre las filas del datagrid y vacia los valores en el worksheet de Excel
+                int ii = 2;
+                foreach (DataGridViewRow fila in dgv.Rows)
+                {
+                    int j = 1;
+                    foreach (DataGridViewCell celda in fila.Cells)
+                    {
+                        if (j == 2)
+                        {
+                            //establece el tipo de dato como texto para mostrar la referencia completa y sin formato
+                            worksheet.Cells[ii, j].NumberFormat = "@";
+                        }
+                        //guarda le contenido de la celta en la hoja de datos
+                        worksheet.Cells[ii, j] = Convert.ToString(celda.Value).ToString();
+                        j++;
+                    }
+                    ii++;
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Archivos de Excel|*.xlsx";
+                saveFileDialog.Title = "Guardar archivo";
+
+                DateTime fecha = DateTime.Today;
+                string fechaHoy = fecha.Day.ToString() + fecha.Month.ToString() + fecha.Year.ToString() + DateTime.Now.Hour.ToString()+DateTime.Now.Minute.ToString();
+
+                saveFileDialog.FileName = "TelecomNoIdentificados_" + fechaHoy;
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.FileName != "")
+                {
+                    Console.WriteLine("Ruta en: " + saveFileDialog.FileName);
+                    workbook.SaveAs(saveFileDialog.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                    app.Quit();
+                }
+            }
+            else
+            {
+                FrmNoIdentificados nid = new FrmNoIdentificados();
+                nid.alerta("No hay datos para exportar...");
+            }
         }
     }
 }

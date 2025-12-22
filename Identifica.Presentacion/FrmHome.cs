@@ -27,6 +27,7 @@ namespace Identifica.Presentacion
         DataTable TableCtaTelecomm;
         DataTable TableAnalitico;
         DataTable TableNoidentificado;
+        DataTable TableSimilares;
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
@@ -72,7 +73,7 @@ namespace Identifica.Presentacion
         }
 
 
-        private OpenFileDialog cargar_archivos()
+        public OpenFileDialog cargar_archivos()
         {
             // Crear una instancia del OpenFileDialog
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -210,8 +211,10 @@ namespace Identifica.Presentacion
         {           
             if (TableAnalitico.Rows != null && TableCtaTelecomm.Rows != null)
             {
+                LRepCartera repcar = new LRepCartera();
+                TableSimilares = repcar.setTableSimilares();
                 FrmProcess procIdentifica = new FrmProcess();
-                procIdentifica.procesoIdentificaCreditos(this.TableAnalitico, this.TableCtaTelecomm, this.TableNoidentificado, this.dgvlista);
+                procIdentifica.procesoIdentificaCreditos(this.TableAnalitico, this.TableCtaTelecomm, this.TableNoidentificado, this.dgvlista,TableSimilares);
                 TotalRegistros();
             }
             else

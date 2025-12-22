@@ -108,3 +108,5 @@ D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.c
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.dll
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.pdb
 D:\VsProjects\IdentificaCreditos\Identifica.Logica\obj\Debug\Identifica.Logica.csprojAssemblyReference.cache
+D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\IdentificaEntidades.dll
+D:\VsProjects\IdentificaCreditos\Identifica.Logica\bin\Debug\IdentificaEntidades.pdb

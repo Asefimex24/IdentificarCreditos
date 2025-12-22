@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identifica.Presentacion", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identifica.Logica", "Identifica.Logica\Identifica.Logica.csproj", "{86A29FCC-CA6C-4B28-9F51-0374FFD256E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentificaEntidades", "IdentificaEntidades\IdentificaEntidades.csproj", "{8C6A02D2-DBB4-41D2-BF75-25CF9DE48AAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{86A29FCC-CA6C-4B28-9F51-0374FFD256E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A29FCC-CA6C-4B28-9F51-0374FFD256E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A29FCC-CA6C-4B28-9F51-0374FFD256E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6A02D2-DBB4-41D2-BF75-25CF9DE48AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6A02D2-DBB4-41D2-BF75-25CF9DE48AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6A02D2-DBB4-41D2-BF75-25CF9DE48AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6A02D2-DBB4-41D2-BF75-25CF9DE48AAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

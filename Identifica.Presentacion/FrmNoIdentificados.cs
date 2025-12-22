@@ -33,5 +33,37 @@ namespace Identifica.Presentacion
         public void alerta(string mensaje) {
             MessageBox.Show(mensaje,"ATENCIÓN");
         }
+
+        private void ptbExportar_MouseEnter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void ptbExportar_MouseLeave(object sender, EventArgs e)
+        {
+            if (ptbExportar.BorderStyle == BorderStyle.FixedSingle) {
+                ptbExportar.BorderStyle = BorderStyle.None;
+            }
+            
+        }
+
+        private void ptbExportar_MouseMove(object sender, MouseEventArgs e)
+        {
+        
+        }
+
+        private void ptbExportar_MouseHover(object sender, EventArgs e)
+        {
+            if (ptbExportar.BorderStyle == BorderStyle.None)
+            {
+                ptbExportar.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+
+        private void ptbExportar_Click(object sender, EventArgs e)
+        {
+            FrmProcess pross = new FrmProcess();
+            pross.exportPDFNoIdentificados(this.dataGridView1);
+        }
     }
 }

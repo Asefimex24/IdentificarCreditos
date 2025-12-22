@@ -59,5 +59,29 @@ namespace Identifica.Logica
                 valorX++;
             }
         }
+
+
+        public void loadCtaTelecomTest(DataTable tabla, SLDocument documento)
+        {
+
+            int valorX = 3;
+            //recorre cada fila del archivo de ctaTelecomm de acuerdo a los valores (posicion-fila , posicion-columna)
+            while (!string.IsNullOrEmpty(documento.GetCellValueAsString(valorX, 3)))
+            {
+                //validar si hay centavos
+                decimal monto = Convert.ToDecimal(documento.GetCellValueAsString(valorX, 5));
+                decimal centavos = Convert.ToDecimal(documento.GetCellValueAsString(valorX, 6));
+
+                if (centavos > 0)
+                {
+                    monto = monto + (centavos / 100);
+                }
+                //agrega cada fila del archivo edo cta telecom al datatable
+                tabla.Rows.Add(documento.GetCellValueAsString(valorX, 1), documento.GetCellValueAsString(valorX, 2), documento.GetCellValueAsDateTime(valorX, 3).ToShortDateString(), documento.GetCellValueAsString(valorX, 4), monto.ToString(), documento.GetCellValueAsString(valorX, 6), documento.GetCellValueAsString(valorX, 7));
+
+                valorX++;
+            }
+        }
+
     }
 }
